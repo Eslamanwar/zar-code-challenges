@@ -31,6 +31,17 @@ def items():
     items = Item.query.all()
     return jsonify([{"id": item.id, "name": item.name} for item in items])
 
+# Readiness check endpoint
+@app.route('/ready')
+def readiness():
+    try:
+        # Simple DB query to check connectivity
+        db.session.execute('SELECT 1')
+        return jsonify({"status": "ready"}), 200
+    except OperationalError:
+        return jsonify({"status": "not ready", "reason": "database unreachable"}), 503
+
+
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
