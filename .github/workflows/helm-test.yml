@@ -43,7 +43,7 @@ jobs:
 
     - name: Wait for Deployment to be ready
       run: |
-        kubectl rollout status deployment/your-app --timeout=2m
+        kubectl rollout status deployment/app --timeout=2m
 
     - name: Run tests
       run: |
