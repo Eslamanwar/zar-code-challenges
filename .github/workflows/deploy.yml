@@ -27,7 +27,7 @@ jobs:
         context: ./devops/simple-flask-app
         file: ./devops/simple-flask-app/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/your-app:v1.0
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/zar:v1.0
 
   deploy-to-k8s:
     needs: build-and-push
