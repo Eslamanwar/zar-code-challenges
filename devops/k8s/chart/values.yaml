@@ -1,0 +1,12 @@
+replicaCount: 2
+
+image:
+  repository: eslamanwar/zar
+  tag: v1.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+containerPort: 80
