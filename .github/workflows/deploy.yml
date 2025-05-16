@@ -28,18 +28,3 @@ jobs:
         file: ./devops/simple-flask-app/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/zar:v1.0
-
-  deploy-to-k8s:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Set up Kubeconfig
-      run: |
-        mkdir -p ~/.kube
-        echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
-
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl config get-contexts
-        kubectl rollout restart deployment flask-api -n default
