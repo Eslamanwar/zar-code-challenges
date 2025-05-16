@@ -22,15 +22,15 @@ spec:
             - containerPort: {{ .Values.containerPort }}
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: {{ .Values.livenessProbe.path }}
               port: {{ .Values.containerPort }}
-            initialDelaySeconds: 15
-            periodSeconds: 20
+            initialDelaySeconds: 5
+            periodSeconds: 5
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /ready
+              path: {{ .Values.readinessProbe.path }}
               port: {{ .Values.containerPort }}
             initialDelaySeconds: 5
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3

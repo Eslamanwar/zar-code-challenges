@@ -13,12 +13,12 @@ containerPort: 80
 
 livenessProbe:
   path: /
-  initialDelaySeconds: 15
-  periodSeconds: 20
+  initialDelaySeconds: 5
+  periodSeconds: 5
   failureThreshold: 3
 
 readinessProbe:
   path: /
   initialDelaySeconds: 5
-  periodSeconds: 10
+  periodSeconds: 5
   failureThreshold: 3
