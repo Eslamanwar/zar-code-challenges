@@ -10,3 +10,15 @@ service:
   port: 80
 
 containerPort: 80
+
+livenessProbe:
+  path: /
+  initialDelaySeconds: 15
+  periodSeconds: 20
+  failureThreshold: 3
+
+readinessProbe:
+  path: /
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  failureThreshold: 3
